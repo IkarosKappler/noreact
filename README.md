@@ -7,7 +7,7 @@ Just JSX.
 
 Before
 
-```
+```Typescript
   const container = document.createElement("div");
   const button = document.createElement("button");
 
@@ -23,7 +23,7 @@ Before
 
 Now
 
-```
+```JSX
   var rootNode = NoReact.createRoot(document.body);
   rootNode.render(
     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
