@@ -1,0 +1,13 @@
+.NoReact-main {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.NoReact-child-1 {
+    margin-left: 2em;
+    color: rgb(0, 195, 255)
+}
+
+.NoReact-child-2 {
+    margin-left: 2em;
+    color: rgb(255, 0, 162)
+}

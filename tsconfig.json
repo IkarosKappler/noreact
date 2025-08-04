@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+		"lib": [ "es2015", "dom" ],
+		
+		"sourceMap": true,
+		"declaration": true,
+
+		"allowJs": false,
+
+		"jsx": "react",
+		"reactNamespace": "NoReact",
+
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitReturns": false,
+		"noImplicitThis": false,
+		"noImplicitAny": false,
+		"strictNullChecks": false,
+		
+		"noUnusedLocals": false,
+		"noUnusedParameters": false
+    },
+    "include": ["./src/ts/**/*.ts", "src/ts/TestApp.tsx"],
+    "exclude": ["./dist", "./tmp", "./src/js", "./src/vanilla", "./npm-package", "./demos", "node_modules"],
+    "removeComments": false
+}

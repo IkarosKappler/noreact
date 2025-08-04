@@ -1,0 +1,1 @@
+{"version":3,"file":"useRef.js","sourceRoot":"","sources":["../ts/useRef.ts"],"names":[],"mappings":"AAAA,MAAM,OAAO,GAAG;IAGd,YAAmB,KAAQ;QACzB,IAAI,CAAC,OAAO,GAAG,KAAK,CAAC;IACvB,CAAC;CACF;AAED,MAAM,CAAC,MAAM,MAAM,GAAG,GAAsC,EAAE;IAC5D,OAAO,IAAI,GAAG,CAAI,SAAS,CAAC,CAAC;AAC/B,CAAC,CAAC"}
