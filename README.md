@@ -11,7 +11,7 @@ Before
   const container = document.createElement("div");
   const button = document.createElement("button");
 
-  container.style["display"] = "float";
+  container.style["display"] = "flex";
   container.style["justify-content"] = "center";
   container.style["width"] = "100%";
 
