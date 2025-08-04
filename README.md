@@ -132,4 +132,4 @@ window.addEventListener("load", function () {
 
 Run `npm run server` and call http://127.0.0.1:8080 in your browser.
 
-![Screenshot]("https://raw.githubusercontent.com/IkarosKappler/noreact/refs/heads/main/screenshots/Screenshot%20from%202025-08-04%2023-57-28.png")
+![Screenshot](https://raw.githubusercontent.com/IkarosKappler/noreact/refs/heads/main/screenshots/Screenshot%20from%202025-08-04%2023-57-28.png)
