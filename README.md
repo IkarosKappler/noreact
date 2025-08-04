@@ -34,4 +34,4 @@ Now
 
 Yeah, I know. Re-inventing the wheel. But I needed a quick and un-sophisticated JSX renderer.
 
-Fun fact: Refs exist. This is my way of accesses the rendered node later.
+Fun fact: Refs exist. This is my way of accesseing the rendered DOM node later.
