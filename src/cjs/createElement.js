@@ -19,13 +19,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports._createElement = void 0;
 var interfaces_1 = require("./interfaces");
 var useRef_1 = require("./useRef");
+/**
+ * The main function to create new elements from their JSX defintion.
+ *
+ * @param {string} name - The node name, like 'div' or 'button' or 'p'.
+ * @param {ElementProps} props - The attribte mapping to apply to the new node, like 'className', 'style', 'id'.
+ * @param {IElementContent...} content - The node's content.
+ * @returns
+ */
 var _createElement = function (name, props) {
     var content = [];
     for (var _i = 2; _i < arguments.length; _i++) {
         content[_i - 2] = arguments[_i];
     }
-    //   console.log("_createElement", name);
-    // console.log("_createElement, content:", content);
     props = props || {};
     var newNode = document.createElement(name);
     _addAttributes(newNode, props);
@@ -33,6 +39,13 @@ var _createElement = function (name, props) {
     return newNode;
 };
 exports._createElement = _createElement;
+/**
+ * A private helper function to add content to a newly created node.
+ *
+ * @param {HTMLElement} node - The node to add content to.
+ * @param {IElementContent...} content - The content to add.
+ * @returns
+ */
 var _addContent = function (node) {
     var content = [];
     for (var _i = 1; _i < arguments.length; _i++) {
@@ -57,6 +70,12 @@ var _addContent = function (node) {
         }
     });
 };
+/**
+ * Apply node attribute (properties) to a newly created node.
+ *
+ * @param {HTMLElement} node - The node to apply the properties/attributes to.
+ * @param {ElementProps} props - The attribute set.
+ */
 var _addAttributes = function (node, props) {
     Object.keys(props).forEach(function (key) {
         // console.log("key", key, "value", props[key]);
@@ -69,14 +88,22 @@ var _addAttributes = function (node, props) {
         }
     });
 };
+/**
+ * Adds a single attribute to the newly created node.
+ *
+ * @param {HTMLElement} node - The node to add the attribute to.
+ * @param {string} key - The attribute name, like 'className', 'style', 'id'.
+ * @param {string | Function | CSSStyleSheet | Ref<HTMLElement | undefined>} value - The attribute's value.
+ */
 var _addAttribute = function (node, key, value) {
-    // console.log("key", key, "value", props[key]);
+    if (!key) {
+        return;
+    }
     var keyLow = key.toLocaleLowerCase();
     if (keyLow === "classname") {
         node.setAttribute("class", "".concat(value));
     }
     else if (key === "style") {
-        // console.log("Assigning styles", value);
         if (typeof value === "object") {
             Object.assign(node.style, value);
         }
@@ -94,7 +121,6 @@ var _addAttribute = function (node, key, value) {
         // No real attribute
     }
     else if (keyLow.length > 2 && keyLow.startsWith("on") && interfaces_1.ClickHandlerNames.includes(keyLow)) {
-        //   console.log("Adding listener for ", key, value);
         // This is probably a function
         // Remove the 'on' part
         var eventName = keyLow.substring(2);

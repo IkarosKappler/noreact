@@ -13,6 +13,10 @@ export class RootNode {
     this.rootHtmlNode = rootHtmlElement;
   }
 
+  /**
+   * In this implementation rendering just means to append the built JSX result to the DOM node.
+   * @param {HTMLElement} content
+   */
   render(content: HTMLElement) {
     this.rootHtmlNode.appendChild(content);
   }

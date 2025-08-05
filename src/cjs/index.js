@@ -19,6 +19,5 @@ __exportStar(require("./createRoot"), exports);
 __exportStar(require("./NoReact"), exports);
 __exportStar(require("./useRef"), exports);
 __exportStar(require("./TestApp"), exports);
-// export default "./createElement";
 exports.default = "./NoReact";
 //# sourceMappingURL=index.js.map

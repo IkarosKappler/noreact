@@ -9,9 +9,15 @@
 import { ClickHandlerNames, ElementProps, IElementContent } from "./interfaces";
 import { Ref } from "./useRef";
 
+/**
+ * The main function to create new elements from their JSX defintion.
+ *
+ * @param {string} name - The node name, like 'div' or 'button' or 'p'.
+ * @param {ElementProps} props - The attribte mapping to apply to the new node, like 'className', 'style', 'id'.
+ * @param {IElementContent...} content - The node's content.
+ * @returns
+ */
 export const _createElement = (name: string, props: ElementProps, ...content: IElementContent) => {
-  //   console.log("_createElement", name);
-  // console.log("_createElement, content:", content);
   props = props || {};
 
   const newNode: HTMLElement = document.createElement(name);
@@ -20,6 +26,13 @@ export const _createElement = (name: string, props: ElementProps, ...content: IE
   return newNode;
 };
 
+/**
+ * A private helper function to add content to a newly created node.
+ *
+ * @param {HTMLElement} node - The node to add content to.
+ * @param {IElementContent...} content - The content to add.
+ * @returns
+ */
 const _addContent = (node: HTMLElement, ...content: IElementContent): void => {
   if (!content || !Array.isArray(content)) {
     return;
@@ -39,6 +52,12 @@ const _addContent = (node: HTMLElement, ...content: IElementContent): void => {
   });
 };
 
+/**
+ * Apply node attribute (properties) to a newly created node.
+ *
+ * @param {HTMLElement} node - The node to apply the properties/attributes to.
+ * @param {ElementProps} props - The attribute set.
+ */
 const _addAttributes = (node: HTMLElement, props: ElementProps) => {
   Object.keys(props).forEach((key: string) => {
     // console.log("key", key, "value", props[key]);
@@ -51,17 +70,25 @@ const _addAttributes = (node: HTMLElement, props: ElementProps) => {
   });
 };
 
+/**
+ * Adds a single attribute to the newly created node.
+ *
+ * @param {HTMLElement} node - The node to add the attribute to.
+ * @param {string} key - The attribute name, like 'className', 'style', 'id'.
+ * @param {string | Function | CSSStyleSheet | Ref<HTMLElement | undefined>} value - The attribute's value.
+ */
 const _addAttribute = (
   node: HTMLElement,
   key: string,
   value: string | Function | CSSStyleSheet | Ref<HTMLElement | undefined>
 ) => {
-  // console.log("key", key, "value", props[key]);
-  const keyLow = key.toLocaleLowerCase();
+  if (!key) {
+    return;
+  }
+  const keyLow: string = key.toLocaleLowerCase();
   if (keyLow === "classname") {
     node.setAttribute("class", `${value}`);
   } else if (key === "style") {
-    // console.log("Assigning styles", value);
     if (typeof value === "object") {
       Object.assign(node.style, value);
     } else {
@@ -76,7 +103,6 @@ const _addAttribute = (
     }
     // No real attribute
   } else if (keyLow.length > 2 && keyLow.startsWith("on") && ClickHandlerNames.includes(keyLow)) {
-    //   console.log("Adding listener for ", key, value);
     // This is probably a function
     // Remove the 'on' part
     var eventName = keyLow.substring(2);
