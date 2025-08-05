@@ -38,7 +38,11 @@ Fun fact: Refs exist. This is my way of accesseing the rendered DOM node later.
 
 ## Example
 
-See ./src/TestApp.tsx and ./test/index.js and ./test/index.html
+See
+
+- `./src/TestApp.tsx` and
+- `./test/index.js` and
+- `./test/index.html`
 
 TestApp.tsx
 
@@ -118,11 +122,6 @@ index.js
 
 ```Javascript
 window.addEventListener("load", function () {
-  console.log("load event");
-  function log(html) {
-    console.log(html);
-  }
-
   var rootNode = NoReact.createRoot(document.getElementById("root"));
   rootNode.render(NoReact.TestApp("World"));
 });
