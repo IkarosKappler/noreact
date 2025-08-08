@@ -7,6 +7,8 @@ export const ClickHandlerNames: Array<string> = [
   "onclick",
   "oninput",
   "onkeydown",
+  "onkeyup",
+  "onkeypress",
   "onload",
   "onmouseover",
   "onmouseout",
@@ -16,7 +18,9 @@ export const ClickHandlerNames: Array<string> = [
   "ontouchcancel",
   "ontouchend",
   "ontouchmove",
-  "ontouchstart"
+  "ontouchstart",
+  "onmousedown",
+  "onmouseup"
 ];
 
 export type ElementProps = { [id: string]: string | Function | CSSStyleSheet | Ref<HTMLElement | undefined> };

@@ -6,6 +6,8 @@ exports.ClickHandlerNames = [
     "onclick",
     "oninput",
     "onkeydown",
+    "onkeyup",
+    "onkeypress",
     "onload",
     "onmouseover",
     "onmouseout",
@@ -15,6 +17,8 @@ exports.ClickHandlerNames = [
     "ontouchcancel",
     "ontouchend",
     "ontouchmove",
-    "ontouchstart"
+    "ontouchstart",
+    "onmousedown",
+    "onmouseup"
 ];
 //# sourceMappingURL=interfaces.js.map
