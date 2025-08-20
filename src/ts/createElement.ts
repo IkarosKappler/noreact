@@ -97,7 +97,7 @@ const _addAttribute = (
   const keyLow: string = key.toLocaleLowerCase();
   if (keyLow === "classname") {
     node.setAttribute("class", `${value}`);
-  } else if (key === "style") {
+  } else if (key === "style" || key === "sx") {
     _applyStyles(node, value);
   } else if (key === "ref") {
     if (!(value instanceof Ref)) {
