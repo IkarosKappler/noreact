@@ -192,7 +192,7 @@ const _applyStyles = (node, value) => {
                     finalStyles["visibility"] = value[key];
                     break;
                 // Position
-                case "p":
+                case "pos":
                     finalStyles["position"] = value[key];
                     break;
                 // Left

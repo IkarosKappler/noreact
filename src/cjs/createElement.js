@@ -213,7 +213,7 @@ var _applyStyles = function (node, value) {
                     finalStyles_1["visibility"] = value[key];
                     break;
                 // Position
-                case "p":
+                case "pos":
                     finalStyles_1["position"] = value[key];
                     break;
                 // Left

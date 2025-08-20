@@ -197,7 +197,7 @@ const _applyStyles = (node: HTMLElement, value: string | Function | CSSStyleShee
           finalStyles["visibility"] = value[key];
           break;
         // Position
-        case "p":
+        case "pos":
           finalStyles["position"] = value[key];
           break;
         // Left
