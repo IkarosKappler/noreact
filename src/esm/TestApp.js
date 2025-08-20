@@ -12,7 +12,7 @@ export const TestApp = (name) => {
     const mouseOut = (event) => {
         event.target.style["background-color"] = "DeepSkyBlue";
     };
-    return (NoReact.createElement("div", { className: "NoReact-main", style: { padding: "3em" } },
+    return (NoReact.createElement("div", { className: "NoReact-main", style: { padding: "3em", mx: "2em", my: 0 } },
         "Hello ",
         name,
         NoReact.createElement("div", { className: "NoReact-child-1", onClick: click1 }, "Hello Nested"),

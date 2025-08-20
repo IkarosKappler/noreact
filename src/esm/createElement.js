@@ -7,6 +7,14 @@
  */
 import { ClickHandlerNames } from "./interfaces";
 import { Ref } from "./useRef";
+const PADDING_LEFT = "padding-left";
+const PADDING_RIGHT = "padding-right";
+const PADDING_TOP = "padding-top";
+const PADDING_BOTTOM = "padding-bottom";
+const MARGIN_LEFT = "margin-left";
+const MARGIN_RIGHT = "margin-right";
+const MARGIN_TOP = "margin-top";
+const MARGIN_BOTTOM = "margin-bottom";
 /**
  * The main function to create new elements from their JSX defintion.
  *
@@ -83,12 +91,7 @@ const _addAttribute = (node, key, value) => {
         node.setAttribute("class", `${value}`);
     }
     else if (key === "style") {
-        if (typeof value === "object") {
-            Object.assign(node.style, value);
-        }
-        else {
-            console.warn(`Cannot assign CSS properties of type ${typeof value}. Please use an object with CSS mappings.`);
-        }
+        _applyStyles(node, value);
     }
     else if (key === "ref") {
         if (!(value instanceof Ref)) {
@@ -107,6 +110,76 @@ const _addAttribute = (node, key, value) => {
     }
     else {
         node.setAttribute(`${key}`, `${value}`);
+    }
+};
+/**
+ * Apply styles and respect mini-styles.
+ *
+ * @param {HTMLElement} node - The node to add the attribute to.
+ * @param {string | Function | CSSStyleSheet | Ref<HTMLElement | undefined>} value - The attribute's stylesheet value.
+ */
+const _applyStyles = (node, value) => {
+    if (typeof value === "object") {
+        // Unwind mini-styles
+        const finalStyles = new CSSStyleSheet();
+        const keys = Object.keys(value);
+        keys.forEach((key) => {
+            switch (key) {
+                // Paddings
+                case "px":
+                    finalStyles[PADDING_LEFT] = value[key];
+                    finalStyles[PADDING_RIGHT] = value[key];
+                    break;
+                case "py":
+                    finalStyles[PADDING_TOP] = value[key];
+                    finalStyles[PADDING_BOTTOM] = value[key];
+                    break;
+                case "pt":
+                    finalStyles[PADDING_TOP] = value[key];
+                    break;
+                case "pb":
+                    finalStyles[PADDING_BOTTOM] = value[key];
+                    break;
+                case "pl":
+                    finalStyles[PADDING_LEFT] = value[key];
+                    break;
+                case "pr":
+                    finalStyles[PADDING_RIGHT] = value[key];
+                    break;
+                // Margins
+                case "mx":
+                    finalStyles[MARGIN_LEFT] = value[key];
+                    finalStyles[MARGIN_RIGHT] = value[key];
+                    break;
+                case "my":
+                    finalStyles[MARGIN_TOP] = value[key];
+                    finalStyles[MARGIN_BOTTOM] = value[key];
+                    break;
+                case "mt":
+                    finalStyles[MARGIN_TOP] = value[key];
+                    break;
+                case "mb":
+                    finalStyles[MARGIN_BOTTOM] = value[key];
+                    break;
+                case "ml":
+                    finalStyles[MARGIN_LEFT] = value[key];
+                    break;
+                case "mr":
+                    finalStyles[MARGIN_RIGHT] = value[key];
+                    break;
+                // Display
+                case "d":
+                    finalStyles["display"] = value[key];
+                    break;
+                default:
+                    finalStyles[key] = value[key];
+            }
+        });
+        // Object.assign(node.style, value);
+        Object.assign(node.style, finalStyles);
+    }
+    else {
+        console.warn(`Cannot assign CSS properties of type ${typeof value}. Please use an object with CSS mappings.`);
     }
 };
 //# sourceMappingURL=createElement.js.map

@@ -19,7 +19,7 @@ export const TestApp = (name: string): JsxElement => {
   };
 
   return (
-    <div className="NoReact-main" style={{ padding: "3em" }}>
+    <div className="NoReact-main" style={{ padding: "3em", mx: "2em", my: 0 }}>
       Hello {name}
       <div className="NoReact-child-1" onClick={click1}>
         Hello Nested
