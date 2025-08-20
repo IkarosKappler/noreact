@@ -265,6 +265,10 @@ var _applyStyles = function (node, value) {
                 case "d":
                     finalStyles_1["display"] = value[key];
                     break;
+                // Flex-Direction
+                case "fd":
+                    finalStyles_1["flex-direction"] = value[key];
+                    break;
                 default:
                     finalStyles_1[key] = value[key];
             }

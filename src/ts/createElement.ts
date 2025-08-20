@@ -176,6 +176,10 @@ const _applyStyles = (node: HTMLElement, value: string | Function | CSSStyleShee
         case "d":
           finalStyles["display"] = value[key];
           break;
+        // Flex-Direction
+        case "fd":
+          finalStyles["flex-direction"] = value[key];
+          break;
         default:
           finalStyles[key] = value[key];
       }
