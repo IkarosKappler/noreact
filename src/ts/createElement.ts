@@ -131,6 +131,12 @@ const _applyStyles = (node: HTMLElement, value: string | Function | CSSStyleShee
     keys.forEach((key: string) => {
       switch (key) {
         // Paddings
+        case "p":
+          finalStyles[PADDING_LEFT] = value[key];
+          finalStyles[PADDING_RIGHT] = value[key];
+          finalStyles[PADDING_TOP] = value[key];
+          finalStyles[PADDING_BOTTOM] = value[key];
+          break;
         case "px":
           finalStyles[PADDING_LEFT] = value[key];
           finalStyles[PADDING_RIGHT] = value[key];
@@ -152,6 +158,12 @@ const _applyStyles = (node: HTMLElement, value: string | Function | CSSStyleShee
           finalStyles[PADDING_RIGHT] = value[key];
           break;
         // Margins
+        case "m":
+          finalStyles[MARGIN_LEFT] = value[key];
+          finalStyles[MARGIN_RIGHT] = value[key];
+          finalStyles[MARGIN_TOP] = value[key];
+          finalStyles[MARGIN_BOTTOM] = value[key];
+          break;
         case "mx":
           finalStyles[MARGIN_LEFT] = value[key];
           finalStyles[MARGIN_RIGHT] = value[key];

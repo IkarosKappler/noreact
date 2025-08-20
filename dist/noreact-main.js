@@ -220,6 +220,12 @@ var _applyStyles = function (node, value) {
         keys.forEach(function (key) {
             switch (key) {
                 // Paddings
+                case "p":
+                    finalStyles_1[PADDING_LEFT] = value[key];
+                    finalStyles_1[PADDING_RIGHT] = value[key];
+                    finalStyles_1[PADDING_TOP] = value[key];
+                    finalStyles_1[PADDING_BOTTOM] = value[key];
+                    break;
                 case "px":
                     finalStyles_1[PADDING_LEFT] = value[key];
                     finalStyles_1[PADDING_RIGHT] = value[key];
@@ -241,6 +247,12 @@ var _applyStyles = function (node, value) {
                     finalStyles_1[PADDING_RIGHT] = value[key];
                     break;
                 // Margins
+                case "m":
+                    finalStyles_1[MARGIN_LEFT] = value[key];
+                    finalStyles_1[MARGIN_RIGHT] = value[key];
+                    finalStyles_1[MARGIN_TOP] = value[key];
+                    finalStyles_1[MARGIN_BOTTOM] = value[key];
+                    break;
                 case "mx":
                     finalStyles_1[MARGIN_LEFT] = value[key];
                     finalStyles_1[MARGIN_RIGHT] = value[key];
