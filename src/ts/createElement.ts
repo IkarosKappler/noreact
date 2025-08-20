@@ -180,6 +180,38 @@ const _applyStyles = (node: HTMLElement, value: string | Function | CSSStyleShee
         case "fd":
           finalStyles["flex-direction"] = value[key];
           break;
+        // Visibility
+        case "v":
+          finalStyles["visibility"] = value[key];
+          break;
+        // Position
+        case "p":
+          finalStyles["position"] = value[key];
+          break;
+        // Left
+        case "l":
+          finalStyles["left"] = value[key];
+          break;
+        // Right
+        case "l":
+          finalStyles["right"] = value[key];
+          break;
+        // Top
+        case "t":
+          finalStyles["top"] = value[key];
+          break;
+        // Tottom
+        case "b":
+          finalStyles["bottom"] = value[key];
+          break;
+        // Width
+        case "w":
+          finalStyles["width"] = value[key];
+          break;
+        // Height
+        case "h":
+          finalStyles["height"] = value[key];
+          break;
         default:
           finalStyles[key] = value[key];
       }

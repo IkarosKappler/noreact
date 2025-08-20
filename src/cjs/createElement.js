@@ -196,6 +196,38 @@ var _applyStyles = function (node, value) {
                 case "fd":
                     finalStyles_1["flex-direction"] = value[key];
                     break;
+                // Visibility
+                case "v":
+                    finalStyles_1["visibility"] = value[key];
+                    break;
+                // Position
+                case "p":
+                    finalStyles_1["position"] = value[key];
+                    break;
+                // Left
+                case "l":
+                    finalStyles_1["left"] = value[key];
+                    break;
+                // Right
+                case "l":
+                    finalStyles_1["right"] = value[key];
+                    break;
+                // Top
+                case "t":
+                    finalStyles_1["top"] = value[key];
+                    break;
+                // Tottom
+                case "b":
+                    finalStyles_1["bottom"] = value[key];
+                    break;
+                // Width
+                case "w":
+                    finalStyles_1["width"] = value[key];
+                    break;
+                // Height
+                case "h":
+                    finalStyles_1["height"] = value[key];
+                    break;
                 default:
                     finalStyles_1[key] = value[key];
             }
