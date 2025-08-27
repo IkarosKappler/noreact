@@ -197,10 +197,10 @@ var _addAttribute = function (node, key, value) {
         // No real attribute
     }
     else if (keyLow.length > 5 && keyLow.startsWith("data-")) {
-        var dataKey = keyLow.substring(5);
+        var dataKey = key.substring(5);
         var dataKeyCamelCased = camelize(dataKey);
-        console.log("Handling data attribute", dataKey);
-        console.log("Applying data set key", dataKey, dataKeyCamelCased, value);
+        // console.log("Handling data attribute", dataKey);
+        // console.log("Applying data set key", "dataKey", dataKey, "dataKeyCamelCased", dataKeyCamelCased, value);
         if (typeof value !== "string") {
             console.warn("Warning, passed object is not a string. Cannot set data attribute '".concat(dataKey, "'."));
         }
@@ -209,6 +209,7 @@ var _addAttribute = function (node, key, value) {
         }
         else {
             node.dataset[dataKeyCamelCased] = value;
+            // console.log("Node data set", node.dataset);
         }
     }
     else if (keyLow.length > 2 && keyLow.startsWith("on") && interfaces_1.ClickHandlerNames.includes(keyLow)) {
@@ -223,12 +224,13 @@ var _addAttribute = function (node, key, value) {
 };
 /**
  * Kebab-case to camelCase.
+ *
+ * See
+ *    https://stackoverflow.com/questions/57556471/convert-kebab-case-to-camelcase-with-javascript
  */
 var camelize = function (str) {
     var arr = str.split("-");
-    var capital = arr.map(function (item, index) {
-        return index ? item.charAt(0).toUpperCase() + item.slice(1).toLowerCase() : item.toLowerCase();
-    });
+    var capital = arr.map(function (item, index) { return (index ? item.charAt(0).toUpperCase() + item.slice(1) : item); });
     // ^-- change here.
     var capitalString = capital.join("");
     // console.log(capitalString);
