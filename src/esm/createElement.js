@@ -102,15 +102,41 @@ const _addAttribute = (node, key, value) => {
         }
         // No real attribute
     }
+    else if (keyLow.length > 5 && keyLow.startsWith("data-")) {
+        const dataKey = keyLow.substring(5);
+        const dataKeyCamelCased = camelize(dataKey);
+        console.log("Handling data attribute", dataKey);
+        console.log("Applying data set key", dataKey, dataKeyCamelCased, value);
+        if (typeof value !== "string") {
+            console.warn(`Warning, passed object is not a string. Cannot set data attribute '${dataKey}'.`);
+        }
+        else if (value.length === 0) {
+            console.warn(`Warning, passed value is empty. Cannot set data attribute '${dataKey}'.`);
+        }
+        else {
+            node.dataset[dataKeyCamelCased] = value;
+        }
+    }
     else if (keyLow.length > 2 && keyLow.startsWith("on") && ClickHandlerNames.includes(keyLow)) {
         // This is probably a function
         // Remove the 'on' part
-        var eventName = keyLow.substring(2);
+        const eventName = keyLow.substring(2);
         node.addEventListener(eventName, value);
     }
     else {
         node.setAttribute(`${key}`, `${value}`);
     }
+};
+/**
+ * Kebab-case to camelCase.
+ */
+const camelize = (str) => {
+    let arr = str.split("-");
+    let capital = arr.map((item, index) => index ? item.charAt(0).toUpperCase() + item.slice(1).toLowerCase() : item.toLowerCase());
+    // ^-- change here.
+    let capitalString = capital.join("");
+    // console.log(capitalString);
+    return capitalString;
 };
 /**
  * Apply styles and respect mini-styles.

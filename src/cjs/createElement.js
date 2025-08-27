@@ -123,6 +123,21 @@ var _addAttribute = function (node, key, value) {
         }
         // No real attribute
     }
+    else if (keyLow.length > 5 && keyLow.startsWith("data-")) {
+        var dataKey = keyLow.substring(5);
+        var dataKeyCamelCased = camelize(dataKey);
+        console.log("Handling data attribute", dataKey);
+        console.log("Applying data set key", dataKey, dataKeyCamelCased, value);
+        if (typeof value !== "string") {
+            console.warn("Warning, passed object is not a string. Cannot set data attribute '".concat(dataKey, "'."));
+        }
+        else if (value.length === 0) {
+            console.warn("Warning, passed value is empty. Cannot set data attribute '".concat(dataKey, "'."));
+        }
+        else {
+            node.dataset[dataKeyCamelCased] = value;
+        }
+    }
     else if (keyLow.length > 2 && keyLow.startsWith("on") && interfaces_1.ClickHandlerNames.includes(keyLow)) {
         // This is probably a function
         // Remove the 'on' part
@@ -132,6 +147,19 @@ var _addAttribute = function (node, key, value) {
     else {
         node.setAttribute("".concat(key), "".concat(value));
     }
+};
+/**
+ * Kebab-case to camelCase.
+ */
+var camelize = function (str) {
+    var arr = str.split("-");
+    var capital = arr.map(function (item, index) {
+        return index ? item.charAt(0).toUpperCase() + item.slice(1).toLowerCase() : item.toLowerCase();
+    });
+    // ^-- change here.
+    var capitalString = capital.join("");
+    // console.log(capitalString);
+    return capitalString;
 };
 /**
  * Apply styles and respect mini-styles.
